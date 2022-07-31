@@ -1,9 +1,15 @@
+from inspect import stack
+from pickletools import stackslice
 from tkinter import *
 
 win = Tk() # This is to create a basic window
-win.geometry("312x324")  # this is for the size of the window 
+win.geometry("312x380")  # this is for the size of the window 
 win.resizable(0, 0)  # this is to prevent from resizing the window
 win.title("Calculator")
+
+global pot
+global stacks
+global ggopbet
 
 ###################Starting with functions ####################
 # 'btn_click' function : 
@@ -31,6 +37,13 @@ def bt_equal():
     result = str(eval(expression)) # 'eval':This function is used to evaluates the string expression directly
     input_text.set(result)
     expression = ""
+
+def get_pot():
+    global expression
+    global pot
+    pot = str(expression)
+    print("pot is: " + str(expression))
+
  
 expression = ""
  
@@ -60,7 +73,7 @@ btns_frame.pack()
  
 # first row
  
-clear = Button(btns_frame, text = "CLEAR", fg = "black", width = 32, height = 3, bd = 0, bg = "#ee2", cursor = "hand2", command = lambda: bt_clear()).grid(row = 0, column = 0, columnspan = 3, padx = 1, pady = 1)
+clear = Button(btns_frame, text = "CLEAR", fg = "black", width = 32, height = 3, bd = 0, bg = "yellow", cursor = "hand2", command = lambda: bt_clear()).grid(row = 0, column = 0, columnspan = 3, padx = 1, pady = 1)
  
 divide = Button(btns_frame, text = "/", fg = "black", width = 10, height = 3, bd = 0, bg = "#eee", cursor = "hand2", command = lambda: btn_click("/")).grid(row = 0, column = 3, padx = 1, pady = 1)
  
@@ -101,5 +114,15 @@ zero = Button(btns_frame, text = "0", fg = "black", width = 21, height = 3, bd =
 point = Button(btns_frame, text = ".", fg = "black", width = 10, height = 3, bd = 0, bg = "#eee", cursor = "hand2", command = lambda: btn_click(".")).grid(row = 4, column = 2, padx = 1, pady = 1)
  
 equals = Button(btns_frame, text = "=", fg = "black", width = 10, height = 3, bd = 0, bg = "#eee", cursor = "hand2", command = lambda: bt_equal()).grid(row = 4, column = 3, padx = 1, pady = 1)
+
+# fifth row
+
+pot_btn = Button(btns_frame, text = "POT", fg = "black", width = 10, height = 3, bd = 0, bg = "blue", cursor = "hand2", command = lambda: get_pot()).grid(row = 5, column = 0, padx = 1, pady = 1)
  
+stack_btn = Button(btns_frame, text = "STACK", fg = "black", width = 10, height = 3, bd = 0, bg = "red", cursor = "hand2", command = lambda: btn_click(8)).grid(row = 5, column = 1, padx = 1, pady = 1)
+ 
+bet_btn = Button(btns_frame, text = "BET", fg = "black", width = 10, height = 3, bd = 0, bg = "green", cursor = "hand2", command = lambda: btn_click(9)).grid(row = 5, column = 2, padx = 1, pady = 1)
+ 
+multiply = Button(btns_frame, text = "*", fg = "black", width = 10, height = 3, bd = 0, bg = "#eee", cursor = "hand2", command = lambda: btn_click("*")).grid(row = 5, column = 3, padx = 1, pady = 1)
+
 win.mainloop()
