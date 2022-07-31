@@ -1,6 +1,7 @@
 from inspect import stack
 from pickletools import stackslice
 from tkinter import *
+from math import sqrt
 
 win = Tk() # This is to create a basic window
 win.geometry("312x380")  # this is for the size of the window 
@@ -41,8 +42,22 @@ def bt_equal():
 def get_pot():
     global expression
     global pot
-    pot = str(expression)
+    pot = float(expression)
     print("pot is: " + str(expression))
+
+def get_stacks():
+    global expression
+    global stacks
+    stacks = float(expression)
+    print("stacks are: " + str(expression))
+
+def calculate_ggop_bet():
+    global pot
+    global stacks
+    global ggopbet
+    ggopbet = (sqrt(pot*pot + 2*pot*stacks) - pot)/2
+    input_text.set(str(ggopbet))
+    print("ggop bbet is: " + str(ggopbet))
 
  
 expression = ""
@@ -119,9 +134,9 @@ equals = Button(btns_frame, text = "=", fg = "black", width = 10, height = 3, bd
 
 pot_btn = Button(btns_frame, text = "POT", fg = "black", width = 10, height = 3, bd = 0, bg = "blue", cursor = "hand2", command = lambda: get_pot()).grid(row = 5, column = 0, padx = 1, pady = 1)
  
-stack_btn = Button(btns_frame, text = "STACK", fg = "black", width = 10, height = 3, bd = 0, bg = "red", cursor = "hand2", command = lambda: btn_click(8)).grid(row = 5, column = 1, padx = 1, pady = 1)
+stack_btn = Button(btns_frame, text = "STACK", fg = "black", width = 10, height = 3, bd = 0, bg = "red", cursor = "hand2", command = lambda: get_stacks()).grid(row = 5, column = 1, padx = 1, pady = 1)
  
-bet_btn = Button(btns_frame, text = "BET", fg = "black", width = 10, height = 3, bd = 0, bg = "green", cursor = "hand2", command = lambda: btn_click(9)).grid(row = 5, column = 2, padx = 1, pady = 1)
+bet_btn = Button(btns_frame, text = "BET", fg = "black", width = 10, height = 3, bd = 0, bg = "green", cursor = "hand2", command = lambda: calculate_ggop_bet()).grid(row = 5, column = 2, padx = 1, pady = 1)
  
 multiply = Button(btns_frame, text = "*", fg = "black", width = 10, height = 3, bd = 0, bg = "#eee", cursor = "hand2", command = lambda: btn_click("*")).grid(row = 5, column = 3, padx = 1, pady = 1)
 
