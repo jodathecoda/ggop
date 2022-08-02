@@ -2,6 +2,7 @@ from inspect import stack
 from pickletools import stackslice
 from tkinter import *
 from math import sqrt
+from random import randint
 
 win = Tk() # This is to create a basic window
 win.geometry("312x380")  # this is for the size of the window 
@@ -58,6 +59,11 @@ def calculate_ggop_bet():
     ggopbet = (sqrt(pot*pot + 2*pot*stacks) - pot)/2
     input_text.set(str(ggopbet))
     print("ggop bbet is: " + str(ggopbet))
+
+def randomizer():
+    rnd = randint(1,100)
+    input_text.set(str(rnd))
+    print("randomizer: " + str(rnd))
 
  
 expression = ""
@@ -138,6 +144,6 @@ stack_btn = Button(btns_frame, text = "STACK", fg = "black", width = 10, height 
  
 bet_btn = Button(btns_frame, text = "BET", fg = "black", width = 10, height = 3, bd = 0, bg = "green", cursor = "hand2", command = lambda: calculate_ggop_bet()).grid(row = 5, column = 2, padx = 1, pady = 1)
  
-multiply = Button(btns_frame, text = "*", fg = "black", width = 10, height = 3, bd = 0, bg = "#eee", cursor = "hand2", command = lambda: btn_click("*")).grid(row = 5, column = 3, padx = 1, pady = 1)
+randomize = Button(btns_frame, text = "RAND", fg = "black", width = 10, height = 3, bd = 0, bg = "pink", cursor = "hand2", command = lambda: randomizer()).grid(row = 5, column = 3, padx = 1, pady = 1)
 
 win.mainloop()
