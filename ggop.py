@@ -1,11 +1,27 @@
+import os
 from inspect import stack
 from pickletools import stackslice
 from tkinter import *
 from math import sqrt
 import random
+import subprocess
+
+global cwd
+cwd = os.getcwd()
+
+FILEBROWSER_PATH = os.path.join(os.getenv('WINDIR'), 'explorer.exe')
+
+def explore(path):
+    # explorer would choke on forward slashes
+    path = os.path.normpath(path)
+
+    if os.path.isdir(path):
+        subprocess.run([FILEBROWSER_PATH, path])
+    elif os.path.isfile(path):
+        subprocess.run([FILEBROWSER_PATH, '/select,', os.path.normpath(path)])
 
 win = Tk() # This is to create a basic window
-win.geometry("312x435")  # this is for the size of the window 
+win.geometry("312x380")  # this is for the size of the window 
 win.resizable(0, 0)  # this is to prevent from resizing the window
 win.title("Calculator")
 
@@ -148,7 +164,7 @@ randomize = Button(btns_frame, text = "RAND", fg = "black", width = 10, height =
 
 # sixt row
  
-add_notes = Button(btns_frame, text = "ADD NOTES", fg = "black", width = 21, height = 3, bd = 0, bg = "#fff", cursor = "hand2", command = lambda: btn_click(0)).grid(row = 6, column = 0, columnspan = 2, padx = 1, pady = 1)
-find_notes = Button(btns_frame, text = "FIND NOTES", fg = "black", width = 21, height = 3, bd = 0, bg = "#fff", cursor = "hand2", command = lambda: btn_click(0)).grid(row = 6, column = 2, columnspan = 2, padx = 1, pady = 1)
+#add_notes = Button(btns_frame, text = "ADD NOTES", fg = "black", width = 21, height = 3, bd = 0, bg = "#fff", cursor = "hand2", command = lambda: explore(cwd)).grid(row = 6, column = 0, columnspan = 2, padx = 1, pady = 1)
+#find_notes = Button(btns_frame, text = "FIND NOTES", fg = "black", width = 21, height = 3, bd = 0, bg = "#fff", cursor = "hand2", command = lambda: explore(cwd)).grid(row = 6, column = 2, columnspan = 2, padx = 1, pady = 1)
 
 win.mainloop()
