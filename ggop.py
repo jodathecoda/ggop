@@ -5,7 +5,7 @@ from math import sqrt
 import random
 
 win = Tk() # This is to create a basic window
-win.geometry("312x380")  # this is for the size of the window 
+win.geometry("312x435")  # this is for the size of the window 
 win.resizable(0, 0)  # this is to prevent from resizing the window
 win.title("Calculator")
 
@@ -138,12 +138,17 @@ equals = Button(btns_frame, text = "=", fg = "black", width = 10, height = 3, bd
 
 # fifth row
 
-pot_btn = Button(btns_frame, text = "POT", fg = "black", width = 10, height = 3, bd = 0, bg = "blue", cursor = "hand2", command = lambda: get_pot()).grid(row = 5, column = 0, padx = 1, pady = 1)
+pot_btn = Button(btns_frame, text = "POT", fg = "black", width = 10, height = 3, bd = 0, bg = "#fff", cursor = "hand2", command = lambda: get_pot()).grid(row = 5, column = 0, padx = 1, pady = 1)
  
-stack_btn = Button(btns_frame, text = "STACK", fg = "black", width = 10, height = 3, bd = 0, bg = "red", cursor = "hand2", command = lambda: get_stacks()).grid(row = 5, column = 1, padx = 1, pady = 1)
+stack_btn = Button(btns_frame, text = "STACK", fg = "black", width = 10, height = 3, bd = 0, bg = "#fff", cursor = "hand2", command = lambda: get_stacks()).grid(row = 5, column = 1, padx = 1, pady = 1)
  
-bet_btn = Button(btns_frame, text = "BET", fg = "black", width = 10, height = 3, bd = 0, bg = "green", cursor = "hand2", command = lambda: calculate_ggop_bet()).grid(row = 5, column = 2, padx = 1, pady = 1)
+bet_btn = Button(btns_frame, text = "BET", fg = "black", width = 10, height = 3, bd = 0, bg = "#fff", cursor = "hand2", command = lambda: calculate_ggop_bet()).grid(row = 5, column = 2, padx = 1, pady = 1)
  
 randomize = Button(btns_frame, text = "RAND", fg = "black", width = 10, height = 3, bd = 0, bg = "pink", cursor = "hand2", command = lambda: randomizer()).grid(row = 5, column = 3, padx = 1, pady = 1)
+
+# sixt row
+ 
+add_notes = Button(btns_frame, text = "ADD NOTES", fg = "black", width = 21, height = 3, bd = 0, bg = "#fff", cursor = "hand2", command = lambda: btn_click(0)).grid(row = 6, column = 0, columnspan = 2, padx = 1, pady = 1)
+find_notes = Button(btns_frame, text = "FIND NOTES", fg = "black", width = 21, height = 3, bd = 0, bg = "#fff", cursor = "hand2", command = lambda: btn_click(0)).grid(row = 6, column = 2, columnspan = 2, padx = 1, pady = 1)
 
 win.mainloop()
