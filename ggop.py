@@ -2,7 +2,7 @@ from inspect import stack
 from pickletools import stackslice
 from tkinter import *
 from math import sqrt
-from random import randint
+import random
 
 win = Tk() # This is to create a basic window
 win.geometry("312x380")  # this is for the size of the window 
@@ -61,8 +61,8 @@ def calculate_ggop_bet():
     print("ggop bbet is: " + str(ggopbet))
 
 def randomizer():
-    rnd = randint(1,100)
-    input_text.set(str(rnd))
+    rnd = random.uniform(1.0,99.9)
+    input_text.set(str(rnd)[0:5] + "%")
     print("randomizer: " + str(rnd))
 
  
