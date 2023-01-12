@@ -23,7 +23,8 @@ def explore(path):
 win = Tk() # This is to create a basic window
 win.geometry("312x425")  # this is for the size of the window 
 win.resizable(0, 0)  # this is to prevent from resizing the window
-win.title("Calculator")
+win.title("GGOP Calculator")
+win.iconbitmap("icons\\calc_small.ico")
 
 global pot
 global stacks
